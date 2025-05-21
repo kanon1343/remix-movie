@@ -1,14 +1,14 @@
-import { PassThrough } from "stream";
-import { renderToPipeableStream } from "react-dom/server";
-import { RemixServer } from "@remix-run/react";
+import { PassThrough } from "node:stream";
 import type { EntryContext } from "@remix-run/deno";
+import { RemixServer } from "@remix-run/react";
 import React from "react";
+import { renderToPipeableStream } from "react-dom/server";
 
 export default function handleRequest(
   request: Request,
   responseStatusCode: number,
   responseHeaders: Headers,
-  remixContext: EntryContext
+  remixContext: EntryContext,
 ) {
   return new Promise((resolve, reject) => {
     const { pipe } = renderToPipeableStream(

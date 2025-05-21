@@ -1,4 +1,12 @@
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from "@remix-run/react";
+import React from "react";
 import styles from "./styles/tailwind.css";
 
 export function links() {
