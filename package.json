@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "deno task dev",
     "start": "deno task start",
-    "build": "deno task build"
+    "build": "deno task build",
+    "check": "deno run -A npm:@biomejs/biome check --write ./app"
   },
   "keywords": [
     "remix",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@remix-run/deno": "^2.0.0",
     "@remix-run/react": "^2.0.0",
+    "deno": "^2.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
