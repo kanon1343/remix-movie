@@ -1,17 +1,17 @@
 {
-  "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react-dom": "https://esm.sh/react-dom@18.2.0",
-    "@remix-run/": "https://esm.sh/@remix-run/",
-    "~/": "./app/"
-  },
-  "tasks": {
-    "dev": "deno run --allow-net --allow-read --allow-env --allow-run --watch server.ts",
-    "start": "deno run --allow-net --allow-read --allow-env --allow-run server.ts",
-    "build": "remix build"
-  },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "react"
-  }
+	"imports": {
+		"react": "https://esm.sh/react@18.2.0",
+		"react-dom": "https://esm.sh/react-dom@18.2.0",
+		"@remix-run/": "https://esm.sh/@remix-run/",
+		"~/": "./app/"
+	},
+	"tasks": {
+		"dev": "deno run --allow-net --allow-read --allow-env --allow-run --watch server.ts",
+		"start": "deno run --allow-net --allow-read --allow-env --allow-run server.ts",
+		"build": "remix build"
+	},
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "react"
+	}
 }
