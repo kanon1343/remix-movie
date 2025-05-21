@@ -3,8 +3,8 @@ import { createRequestHandler } from "@remix-run/deno";
 import * as build from "@remix-run/dev/server-build";
 
 const handler = createRequestHandler({
-  build,
-  mode: "development",
+	build,
+	mode: "development",
 });
 
 console.log("Server started at http://localhost:8000");
