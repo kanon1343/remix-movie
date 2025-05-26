@@ -1,7 +1,7 @@
 {
-	"name": "remix-movie",
+	"name": "remix-twitter",
 	"version": "1.0.0",
-	"description": "Remix movie application using Deno runtime",
+	"description": "Remix twitter application using Deno runtime",
 	"main": "index.js",
 	"scripts": {
 		"dev": "deno task dev",
@@ -10,7 +10,7 @@
 		"check": "deno run -A npm:@biomejs/biome check --write ./",
 		"prepare": "husky install"
 	},
-	"keywords": ["remix", "deno", "movie", "tmdb"],
+	"keywords": ["remix", "deno", "twitter", "tmdb"],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {

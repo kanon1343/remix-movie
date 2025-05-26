@@ -1,4 +1,4 @@
-# remix-movie
+# remix-twitter
 
 プロジェクト概要
 
