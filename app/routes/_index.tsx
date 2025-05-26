@@ -3,7 +3,9 @@ import React from "react";
 export default function Index() {
 	return (
 		<div className="p-8 max-w-4xl mx-auto">
-			<h1 className="text-3xl font-bold text-blue-600 mb-4">Remix Twitter App</h1>
+			<h1 className="text-3xl font-bold text-blue-600 mb-4">
+				Remix Twitter App
+			</h1>
 			<p className="text-gray-700">
 				Welcome to Remix Twitter App powered by Deno!
 			</p>
