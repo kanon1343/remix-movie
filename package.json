@@ -13,12 +13,7 @@
 		"prisma:migrate": "npx prisma migrate dev",
 		"prisma:seed": "npx prisma db seed"
 	},
-	"keywords": [
-		"remix",
-		"deno",
-		"twitter",
-		"tmdb"
-	],
+	"keywords": ["remix", "deno", "twitter", "tmdb"],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
