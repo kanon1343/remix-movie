@@ -110,42 +110,42 @@ async function main() {
 
 	await prisma.follower.create({
 		data: {
-			userId: user1.id,    // User1 has a follower
+			userId: user1.id, // User1 has a follower
 			followerId: user2.id, // User2 is the follower
 		},
 	});
 
 	await prisma.following.create({
 		data: {
-			userId: user2.id,      // User2 is following someone
+			userId: user2.id, // User2 is following someone
 			followingId: user1.id, // User1 is being followed
 		},
 	});
 
 	await prisma.follower.create({
 		data: {
-			userId: user1.id,    // User1 has a follower
+			userId: user1.id, // User1 has a follower
 			followerId: user3.id, // User3 is the follower
 		},
 	});
 
 	await prisma.following.create({
 		data: {
-			userId: user3.id,      // User3 is following someone
+			userId: user3.id, // User3 is following someone
 			followingId: user1.id, // User1 is being followed
 		},
 	});
 
 	await prisma.follower.create({
 		data: {
-			userId: user2.id,    // User2 has a follower
+			userId: user2.id, // User2 has a follower
 			followerId: user1.id, // User1 is the follower
 		},
 	});
 
 	await prisma.following.create({
 		data: {
-			userId: user1.id,      // User1 is following someone
+			userId: user1.id, // User1 is following someone
 			followingId: user2.id, // User2 is being followed
 		},
 	});
