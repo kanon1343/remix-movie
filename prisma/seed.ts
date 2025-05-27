@@ -4,7 +4,8 @@ const prisma = new PrismaClient();
 
 async function main() {
 	await prisma.like.deleteMany({});
-	await prisma.follow.deleteMany({});
+	await prisma.follower.deleteMany({});
+	await prisma.following.deleteMany({});
 	await prisma.tweet.deleteMany({});
 	await prisma.user.deleteMany({});
 
@@ -107,28 +108,49 @@ async function main() {
 
 	console.log("Created likes");
 
-	await prisma.follow.create({
+	await prisma.follower.create({
 		data: {
-			followerId: user2.id,
-			followingId: user1.id,
+			userId: user1.id,    // User1 has a follower
+			followerId: user2.id, // User2 is the follower
 		},
 	});
 
-	await prisma.follow.create({
+	await prisma.following.create({
 		data: {
-			followerId: user3.id,
-			followingId: user1.id,
+			userId: user2.id,      // User2 is following someone
+			followingId: user1.id, // User1 is being followed
 		},
 	});
 
-	await prisma.follow.create({
+	await prisma.follower.create({
 		data: {
-			followerId: user1.id,
-			followingId: user2.id,
+			userId: user1.id,    // User1 has a follower
+			followerId: user3.id, // User3 is the follower
 		},
 	});
 
-	console.log("Created follows");
+	await prisma.following.create({
+		data: {
+			userId: user3.id,      // User3 is following someone
+			followingId: user1.id, // User1 is being followed
+		},
+	});
+
+	await prisma.follower.create({
+		data: {
+			userId: user2.id,    // User2 has a follower
+			followerId: user1.id, // User1 is the follower
+		},
+	});
+
+	await prisma.following.create({
+		data: {
+			userId: user1.id,      // User1 is following someone
+			followingId: user2.id, // User2 is being followed
+		},
+	});
+
+	console.log("Created followers and followings");
 
 	console.log("Database seeding completed");
 }
@@ -136,7 +158,7 @@ async function main() {
 main()
 	.catch((e) => {
 		console.error(e);
-		process.exit(1);
+		process.exit(1 as never);
 	})
 	.finally(async () => {
 		await prisma.$disconnect();

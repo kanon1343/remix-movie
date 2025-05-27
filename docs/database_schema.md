@@ -33,9 +33,16 @@ erDiagram
         datetime createdAt
     }
     
-    Follow {
+    Follower {
         string id PK
+        string userId FK
         string followerId FK
+        datetime createdAt
+    }
+    
+    Following {
+        string id PK
+        string userId FK
         string followingId FK
         datetime createdAt
     }
@@ -43,8 +50,8 @@ erDiagram
     User ||--o{ Tweet : "creates"
     User ||--o{ Like : "gives"
     Tweet ||--o{ Like : "receives"
-    User ||--o{ Follow : "follows"
-    User ||--o{ Follow : "followed by"
+    User ||--o{ Follower : "has followers"
+    User ||--o{ Following : "is following"
 ```
 
 ## Relationships
@@ -61,16 +68,17 @@ erDiagram
    - A tweet can receive multiple likes
    - Each like is associated with exactly one tweet
 
-4. **User to Follow (as follower)**: One-to-Many
-   - A user can follow multiple users
-   - Each follow relationship has exactly one follower
+4. **User to Follower**: One-to-Many
+   - A user can have multiple followers
+   - Each follower relationship connects a user with one of their followers
 
-5. **User to Follow (as following)**: One-to-Many
-   - A user can be followed by multiple users
-   - Each follow relationship has exactly one user being followed
+5. **User to Following**: One-to-Many
+   - A user can follow multiple other users
+   - Each following relationship connects a user with someone they are following
 
 ## Constraints
 
 - `User.username` and `User.email` are unique
 - `Like` has a unique constraint on the combination of `userId` and `tweetId`
-- `Follow` has a unique constraint on the combination of `followerId` and `followingId`
+- `Follower` has a unique constraint on the combination of `userId` and `followerId`
+- `Following` has a unique constraint on the combination of `userId` and `followingId`

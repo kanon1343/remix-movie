@@ -23,8 +23,10 @@ model User {
 
   tweets    Tweet[]
   likes     Like[]
-  followers Follow[] @relation("following")
-  following Follow[] @relation("follower")
+  followers Follower[] @relation("userFollowers")
+  following Following[] @relation("userFollowing")
+  followerUsers Follower[] @relation("followerUsers")
+  followingUsers Following[] @relation("followingUsers")
 }
 
 model Tweet {
@@ -50,14 +52,26 @@ model Like {
   @@unique([userId, tweetId])
 }
 
-model Follow {
+model Follower {
   id          String   @id @default(uuid())
+  userId      String
   followerId  String
+  createdAt   DateTime @default(now())
+
+  user        User     @relation("userFollowers", fields: [userId], references: [id], onDelete: Cascade)
+  follower    User     @relation("followerUsers", fields: [followerId], references: [id])
+
+  @@unique([userId, followerId])
+}
+
+model Following {
+  id          String   @id @default(uuid())
+  userId      String
   followingId String
   createdAt   DateTime @default(now())
 
-  follower    User     @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
-  following   User     @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+  user        User     @relation("userFollowing", fields: [userId], references: [id], onDelete: Cascade)
+  following   User     @relation("followingUsers", fields: [followingId], references: [id])
 
-  @@unique([followerId, followingId])
+  @@unique([userId, followingId])
 }
