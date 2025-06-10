@@ -8,12 +8,16 @@
 		"start": "deno task start",
 		"build": "deno task build",
 		"check": "deno run -A npm:@biomejs/biome check --write ./",
-		"prepare": "husky install"
+		"prepare": "husky install",
+		"prisma:generate": "npx prisma generate",
+		"prisma:migrate": "npx prisma migrate dev",
+		"prisma:seed": "npx prisma db seed"
 	},
 	"keywords": ["remix", "deno", "twitter", "tmdb"],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@prisma/client": "^6.8.0",
 		"@remix-run/deno": "^2.0.0",
 		"@remix-run/react": "^2.0.0",
 		"deno": "^2.3.3",
@@ -22,9 +26,16 @@
 	},
 	"devDependencies": {
 		"@remix-run/dev": "^2.0.0",
+		"@types/node": "^22.15.21",
 		"biome": "^0.3.3",
 		"husky": "^9.1.7",
-		"tailwindcss": "^3.3.0"
+		"prisma": "^6.8.0",
+		"tailwindcss": "^3.3.0",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.8.3"
 	},
-	"packageManager": "pnpm@10.11.0"
+	"packageManager": "pnpm@10.11.0",
+	"prisma": {
+		"seed": "ts-node --transpile-only prisma/seed.ts"
+	}
 }

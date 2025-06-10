@@ -53,3 +53,52 @@ npm install -g pnpm
 スタイリング: Tailwind CSS
 
 API: TMDB
+
+データベース: PostgreSQL + Prisma
+
+### データベース設定
+
+#### 必要なツール
+
+- Docker: PostgreSQL コンテナを実行するために必要
+- Node.js: Prisma CLI を実行するために必要
+
+#### セットアップ手順
+
+1. 環境変数の設定:
+
+```bash
+# .env.example を .env にコピー
+cp .env.example .env
+```
+
+2. Docker で PostgreSQL を起動:
+
+```bash
+# PostgreSQL コンテナを起動
+docker-compose up -d
+```
+
+3. Prisma セットアップ:
+
+```bash
+# Prisma クライアントを生成
+pnpm prisma:generate
+
+# データベースマイグレーションを実行
+pnpm prisma:migrate
+
+# テストデータを投入
+pnpm prisma:seed
+```
+
+#### データモデル
+
+このアプリケーションは以下のデータモデルを使用しています:
+
+- `User`: ユーザー情報 (id, username, email, password, name, bio, avatar など)
+- `Tweet`: ツイート情報 (id, content, userId など)
+- `Like`: いいね情報 (userId, tweetId など)
+- `Follow`: フォロー関係 (followerId, followingId など)
+
+詳細なスキーマは `prisma/schema.prisma` ファイルを参照してください。
